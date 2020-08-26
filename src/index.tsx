@@ -1,8 +1,9 @@
 import * as React from 'react'
 import { FlatList, FlatListProps, TouchableOpacity } from 'react-native'
 
-interface ItemObj {
+interface ItemObj extends FlatList {
   isSelected: boolean,
+  id: string
 
 }
 
@@ -14,22 +15,27 @@ interface FlatListSelectableProps extends FlatListProps<ItemObj> {
 export const FlatListSelectable: React.FC<FlatListSelectableProps> = (props) => {
 
   const [data, setData] = React.useState<any>(() => {
-    return props.data?.map(item => ({ ...item, isSelected: false }))
+    return props.data?.map((item, index) => ({ ...item, isSelected: false, id: index.toString() }))
   })
 
 
 
-  function handleToucheInItem() {
-    console.log(data)
+  function handleToucheInItem(itemId: string) {
+    console.log(itemId)
   }
   function renderItem({ item }) {
-    return <TouchableOpacity onPress={handleToucheInItem}>
-      {props.renderItem()}
+    return <TouchableOpacity onPress={() => handleToucheInItem(item.id)}>
+      {props.renderItem(item)}
     </TouchableOpacity>
   }
 
 
 
 
-  return <FlatList {...props} data={data} renderItem={renderItem} />
+  return <FlatList
+    {...props}
+    data={data}
+    renderItem={renderItem}
+    keyExtractor={(item) => item.id}
+  />
 } 
