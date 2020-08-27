@@ -19,7 +19,7 @@ export const FlatListSelectable: React.FC<FlatListSelectableProps> = (props) => 
   })
 
   React.useEffect(() => {
-    console.log(data)
+
   }, [data])
 
 
@@ -37,7 +37,7 @@ export const FlatListSelectable: React.FC<FlatListSelectableProps> = (props) => 
 
 
   return <FlatList
-    contentContainerStyle={{ paddingVertical: 5}}
+    contentContainerStyle={{ paddingVertical: 5 }}
     {...props}
     data={data}
     renderItem={renderItem}

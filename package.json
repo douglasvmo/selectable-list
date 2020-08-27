@@ -1,6 +1,6 @@
 {
-  "name": "selectable-list",
-  "version": "1.0.5",
+  "name": "selectable-flatlist",
+  "version": "1.0.0",
   "description": "",
   "main": "lib/index.js",
   "type": "lib",
