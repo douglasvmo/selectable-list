@@ -18,13 +18,17 @@ export const FlatListSelectable: React.FC<FlatListSelectableProps> = (props) => 
     return props.data?.map((item, index) => ({ ...item, isSelected: false, id: index.toString() }))
   })
 
+  React.useEffect(() => {
+    console.log(data)
+  }, [data])
+
 
 
   function handleToucheInItem(itemId: string) {
-    console.log(itemId)
+    setData((prevState) => prevState.map(item => item.id === itemId ? { ...item, isSelected: !item.isSelected } : item))
   }
   function renderItem({ item }) {
-    return <TouchableOpacity onPress={() => handleToucheInItem(item.id)}>
+    return <TouchableOpacity style={item.isSelected ? { backgroundColor: 'rgb(226, 69,52)' } : {}} onPress={() => handleToucheInItem(item.id)}>
       {props.renderItem(item)}
     </TouchableOpacity>
   }
