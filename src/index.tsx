@@ -37,6 +37,7 @@ export const FlatListSelectable: React.FC<FlatListSelectableProps> = (props) => 
 
 
   return <FlatList
+    contentContainerStyle={{ paddingVertical: 5}}
     {...props}
     data={data}
     renderItem={renderItem}
