@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { FlatList, FlatListProps, TouchableOpacity, StyleProp, StyleSheetProperties } from 'react-native'
+import { FlatList, FlatListProps, TouchableOpacity, StyleProp, StyleSheetProperties, ViewStyle } from 'react-native'
 
 interface ItemObj extends FlatList {
   isSelected: boolean,
@@ -9,9 +9,8 @@ interface ItemObj extends FlatList {
 
 interface FlatListSelectableProps extends FlatListProps<ItemObj> {
   renderItem: any;
-  styleSelectedItem: StyleSheetProperties,
-  styleUnSelectedItem: StyleSheetProperties
-
+  styleSelectedItem?: StyleProp<ViewStyle>,
+  styleUnSelectedItem?: StyleProp<ViewStyle>
 }
 
 
@@ -33,7 +32,7 @@ export const FlatListSelectable: React.FC<FlatListSelectableProps> = (props) => 
   function renderItem({ item }) {
     return (
       <TouchableOpacity
-        style={item.isSelected ? { ...props.styleSelectedItem } : { ...props.styleUnSelectedItem }}
+        style={item.isSelected ? props.styleSelectedItem : props.styleUnSelectedItem}
         onPress={() => handleToucheInItem(item.id)}
       >
         {props.renderItem(item)}
