@@ -11,7 +11,9 @@ interface FlatListSelectableProps extends FlatListProps<ItemObj> {
   renderItem: any;
   styleSelectedItem?: StyleProp<ViewStyle>,
   styleUnSelectedItem?: StyleProp<ViewStyle>,
-  selectedItemId?: Function
+  selectedItemId?: Function,
+  selectAllItems?: boolean,
+  unselectAllItems?: boolean
 
 }
 
@@ -28,15 +30,23 @@ export const FlatListSelectable: React.FC<FlatListSelectableProps> = (props) => 
   })
 
   React.useEffect(() => {
+    if (props.selectAllItems === true) {
+      setData(prevState => prevState?.map(item => ({ ...item, isSelected: true })) as DataStateType)
+    }
+    if (props.unselectAllItems === true) {
+      setData(prevState => prevState?.map(item => ({ ...item, isSelected: false })) as DataStateType)
+    }
+  }, [])
+
+  React.useEffect(() => {
 
     if (props.data?.length === 0) {
       return;
     }
 
-    const selectedArray = data?.filter(item => item.isSelected === true)
-    const idSelectedItemArray = selectedArray?.map(item => item.id)
-
     if (props.selectedItemId) {
+      const selectedArray = data?.filter(item => item.isSelected === true)
+      const idSelectedItemArray = selectedArray?.map(item => item.id)
       props.selectedItemId(idSelectedItemArray)
     }
 
