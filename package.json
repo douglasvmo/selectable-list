@@ -22,7 +22,7 @@
     "react-native": "*"
   },
   "repository": {
-        "type": "git",
-        "url": "git@github.com:douglasOlv/selectable-list.git"
-    },
+    "type": "git",
+    "url": "git@github.com:douglasOlv/selectable-flatlist.git"
+  }
 }
