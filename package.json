@@ -1,5 +1,5 @@
 {
-  "name": "selectable-flatlist",
+  "name": "selectable-list",
   "version": "1.0.0",
   "description": "",
   "main": "lib/index.js",
@@ -23,6 +23,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:douglasOlv/selectable-flatlist.git"
+    "url": "git@github.com:douglasOlv/selectable-list.git"
   }
 }
