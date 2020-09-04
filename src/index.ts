@@ -52,13 +52,13 @@ export const createListStore = () => {
         })
     }
 
-    const allSelectedItemsId = () => {
+    const idOfAllSelectedItems = () => {
         return data?.filter(item => item.selected === true).map(item => item.id)
     }
 
 
     return {
-        allSelectedItemsId,
+        idOfAllSelectedItems,
         isSelected,
         unSelectItem,
         selectItem,
